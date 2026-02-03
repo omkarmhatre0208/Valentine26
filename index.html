@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Letter for You</title>
+    <style>
+      :root{ --bg:#fff6f6; --accent:#ff5b7a; }
+      html,body{ height:100%; margin:0; font-family: "Segoe UI", Roboto, Arial, sans-serif; background: linear-gradient(180deg,#fff8f8 0%, #fff 60%); }
+      .wrap{ min-height:100%; display:flex; align-items:center; justify-content:center; gap:24px; flex-direction:column; padding:40px; }
+      .card{ max-width:760px; width:100%; text-align:center; }
+      .letter{ width:90%; max-width:720px; display:block; margin:0 auto; box-shadow: 0 12px 30px rgba(0,0,0,0.08); border-radius:14px; transform-origin:center; transition:transform .25s ease; }
+      .letter:hover{ transform:translateY(-6px) scale(1.01); }
+      .caption{ margin-top:18px; color:var(--accent); font-weight:600; letter-spacing:0.1em; }
+      .actions{ margin-top:12px; }
+      .btn{ display:inline-block; background:var(--accent); color:white; padding:10px 16px; border-radius:10px; text-decoration:none; font-weight:600; box-shadow:0 8px 18px rgba(255,91,122,0.18); }
+      .note{ margin-top:24px; color:#6a6a6a; font-size:14px; }
+    </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="card">
+      <a href="valentine.html" title="Click here">
+        <img src="letter.svg" alt="Envelope with a heart seal and the words 'Click here'" class="letter">
+      </a>
+      
+    </section>
+  </main>
+</body>
+</html>

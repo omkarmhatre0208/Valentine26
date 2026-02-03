@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>More Images</title>
+  <style>
+    :root{ --bg:#fff; --accent:#ff5b7a }
+    html,body{ height:100%; margin:0; font-family:Segoe UI, Roboto, Arial, sans-serif; background:linear-gradient(180deg,#fff #ffeef2); display:flex; align-items:center; justify-content:center }
+    .frame{ width:920px; max-width:96%; text-align:center; padding:28px; border-radius:14px; background:rgba(255,255,255,0.95); box-shadow:0 18px 40px rgba(0,0,0,0.06) }
+    .viewer{ width:100%; max-width:800px; height:480px; margin:0 auto; display:flex; align-items:center; justify-content:center; overflow:hidden; background:#fff0f6; border-radius:10px; border:8px solid rgba(255,91,122,0.12) }
+    .viewer img{ max-width:100%; max-height:100%; width:auto; height:auto; transition:opacity .6s ease; opacity:0 }
+    .controls{ margin-top:18px }
+    .link{ display:inline-block; padding:8px 12px; border-radius:8px; background:linear-gradient(90deg,var(--accent),#ff7aa3); color:#fff; text-decoration:none; font-weight:700 }
+    .caption{ margin-top:12px; color:#7f2b43; font-weight:700 }
+    @media (max-width:520px){ .viewer{ height:280px } }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <h1 style="color:#b21849"></h1>
+    <div class="viewer">
+      <img id="slideshow" src="Image 3.1.jpeg" alt="slideshow" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,' + encodeURIComponent('<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;800&quot; height=&quot;450&quot;><rect width=&quot;100%&quot; height=&quot;100%&quot; fill=&quot;#fff0f6&quot;/><text x=&quot;50%&quot; y=&quot;54%&quot; font-size=&quot;22&quot; text-anchor=&quot;middle&quot; fill=&quot;#b21849&quot; font-family=&quot;Segoe UI, Roboto, Arial&quot;>Image missing</text></svg>')" />
+    </div>
+
+    <div class="controls">
+      <a href="index.html" class="link">Back to start</a>
+      
+    </div>
+
+  <script>
+    (function(){
+      const images = ['Image 3.jpeg','Image 3.1.jpeg','Image 4.jpeg'];
+      let idx = 0;
+      const img = document.getElementById('slideshow');
+      const displayMs = 3000; // visible time
+
+      // helper to start the cycle
+      function cycle(){
+        // set src and fade in
+        img.src = images[idx];
+        img.style.opacity = 0;
+        // force reflow to ensure transition works after src change
+        void img.offsetWidth;
+        img.style.opacity = 1;
+
+        // after visible time, fade out then move to next image
+        setTimeout(()=>{
+          img.style.opacity = 0;
+          img.addEventListener('transitionend', onFadeOut, { once:true });
+        }, displayMs);
+      }
+
+      function onFadeOut(){
+        idx = (idx + 1) % images.length;
+        cycle();
+      }
+
+      // initial start (allow initial image to show)
+      window.addEventListener('load', ()=>{
+        // ensure first image shows with fade
+        img.style.opacity = 0;
+        setTimeout(()=>{ cycle(); }, 120);
+      });
+
+    })();
+  </script>
+</body>
+</html>         
